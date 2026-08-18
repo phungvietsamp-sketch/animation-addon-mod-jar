@@ -21,8 +21,11 @@ jobs:
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@v2
 
+      - name: Make gradlew executable
+        run: chmod +x gradlew
+
       - name: Build with Gradle
-        run: ./gradlew build
+        run: ./gradlew build --stacktrace --info
 
       - name: Upload JAR
         uses: actions/upload-artifact@v4
