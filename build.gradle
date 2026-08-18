@@ -1,0 +1,49 @@
+plugins {
+    id 'fabric-loom' version '1.8.9'
+    id 'java'
+    id 'eclipse'
+    id 'idea'
+}
+
+group = 'com.example'
+version = '1.0.0'
+archivesBaseName = 'animationmod'
+
+// java toolchain removed - compile with Java 21 targeting Java 17
+
+repositories {
+    mavenCentral()
+    maven { url 'https://maven.fabricmc.net' }
+}
+
+dependencies {
+    minecraft 'com.mojang:minecraft:1.20.1'
+    mappings 'net.fabricmc:yarn:1.20.1+build.1'
+    modImplementation 'net.fabricmc:fabric-loader:0.16.0'
+    modImplementation 'net.fabricmc.fabric-api:fabric-api:0.92.11+1.20.1'
+    modImplementation 'net.fabricmc:intermediary:1.20.1'
+}
+
+// loom configuration uses defaults
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << '-source' << '17' << '-target' << '17'
+}
+
+jar {
+    manifest {
+        attributes([
+            'Specification-Title': 'Animation Mod',
+            'Specification-Vendor': 'Example',
+            'Specification-Version': '1',
+            'Implementation-Title': project.name,
+            'Implementation-Version': project.version,
+            'Implementation-Vendor': 'Example',
+            'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        ])
+    }
+    from('src/main/resources') {
+        include 'fabric.mod.json'
+    }
+}

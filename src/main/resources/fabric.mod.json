@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "animationmod",
+  "version": "1.0.0",
+  "name": "Animation Mod",
+  "description": "A mod adding custom animations for Minecraft 1.20.1",
+  "authors": ["Example"],
+  "contact": {
+    "homepage": "https://github.com/phungvietsamp-sketch/animation-addon-mod-jar",
+    "sources": "https://github.com/phungvietsamp-sketch/animation-addon-mod-jar",
+    "issues": "https://github.com/phungvietsamp-sketch/animation-addon-mod-jar/issues"
+  },
+  "license": "MIT",
+  "icon": "assets/animationmod/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.example.animationmod.AnimationMod"
+    ],
+    "client": [
+      "com.example.animationmod.AnimationModClient"
+    ]
+  },
+  "mixins": [
+    "animationmod.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.20.1",
+    "java": ">=17",
+    "fabric-api": "*"
+  },
+  "custom": {
+    "fabric-api:datagen": "true"
+  }
+}
